@@ -7,7 +7,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import urlparse
 import wiringpi2 as wpi
 
-PORT_NUMBER = 5050
+PORT_NUMBER = 80
 red         = 4 # GPIO pin 4 = physical pin 23
 green       = 5 # GPIO pin 5 = physical pin 24
 blue        = 6 # GPIO pin 6 = physical pin 25
@@ -74,7 +74,7 @@ try:
 	wpi.softPwmCreate(green, 0, 100)
 	wpi.softPwmCreate(blue, 0, 100)
 	server = HTTPServer(('', PORT_NUMBER), reqHandler)
-	print 'Started httpserver on port ' , PORT_NUMBER
+	print 'Started pwm_server on port ' , PORT_NUMBER
 	server.serve_forever()
 
 except KeyboardInterrupt:
